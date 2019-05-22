@@ -29,6 +29,8 @@ age = input("Please input your age：")
 gender = input("Please input your gender：")
 hobbies = input("Please input your hobbies：")
 motto = input("Please input your motto：")
+
+# 1
 print('*' * 66 + '\n' + '个人信息展示')
 print('\n' + name + '(' + screen_name + ')' + '\n')
 print('年龄：' + age)
