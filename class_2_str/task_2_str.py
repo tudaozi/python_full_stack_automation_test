@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # coding=UTF-8
 """
-@Author: STAURL.COM
-@Contact: admin@staurl.com
+@Author: 刀刀
+@Contact: 1626202029
 @Project: python_full_stack_automation_test
 @File: task_2_str.py
 @Time: 2019/5/22 0:42
-@Desc: S
+@Desc: 字符串相关课程
 """
 """
     1、定义字符串I'm Lemon, I love Python automated testing！
