@@ -62,13 +62,13 @@ print("\n4.演练字符串操作")
 my_hobby = "Never stop learning!"
 
 print("\n# 截取从 位置2 ~ 位置6 的字符串")
-print(my_hobby[2:7])
+print(my_hobby[1:6])
 
 print("\n# 截取从 位置2 ~ 末尾 的字符串")
-print(my_hobby[2:])
+print(my_hobby[1:])
 
 print("\n# 截取从 开始位置~ 位置6 的字符串")
-print(my_hobby[:7])
+print(my_hobby[:6])
 
 print("\n# 截取完整的字符串")
 print(my_hobby[:])
