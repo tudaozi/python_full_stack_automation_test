@@ -130,9 +130,11 @@ print('性别：' + gender)
 print('爱好：' + hobbies)
 print('座右铭：' + motto)
 print('*' * 66)
+
 # 2
 print('*' * 66 + "\n个人信息展示\n\n%s(%s)\n\n年龄：%s\n性别：%s\n爱好：%s\n座右铭：%s\n" % (
     name, screen_name, age, gender, hobbies, motto) + '*' * 66)
+
 # 3
 print('*' * 66 + "\n个人信息展示\n\n{}({})\n\n年龄：{}\n性别：{}\n爱好：{}\n座右铭：{}\n".format(
     name, screen_name, age, gender, hobbies, motto) + '*' * 66)
