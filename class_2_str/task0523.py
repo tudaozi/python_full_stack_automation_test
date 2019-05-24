@@ -40,30 +40,43 @@ print(info)
 d, 你为了取得更好的成绩，需要取一个花名，并修改自己的身高和其他你觉得需要改的信息。
 e, 你进一步添加自己的兴趣，至少需要 3 项。一经确定，不可修改。
 """
-# a. 某相亲节目需要获取你的个人信息，请存储你的：姓名、性别、年龄
+# a、某相亲节目需要获取你的个人信息，请存储你的：姓名、性别、年龄
 
-# 1
-man_info = ['姓名', '性别', '年龄']
-print(man_info)
+# 1 列表
+manInfoList = ['刀刀', '男', 31]
+print(manInfoList)
 
-# 2
-man_info = ('姓名', '性别', '年龄')
-print(man_info)
+# 2 元组
+manInfoTuple = ('刀刀', '男', 31)
+print(manInfoTuple)
 
-# b. 有一个人对你很感兴趣，平台需要您补足您的身高和联系方式；
-# 1
-man_info1 = ['姓名', '性别', '年龄']
-print(id(man_info1))
-man_info2 = man_info1.append('身高')
-man_info3 = man_info1.append('联系方式')
-print(man_info1)
-print(id(man_info1))
-print(id(man_info3))
+# 3 字典
+manInfoDict = {'姓名': '刀刀', '性别': '男', '年龄': 31}
+print(manInfoDict)
 
-# 2
-man_info4 = ['姓名', '性别', '年龄']
-man_info5 = ['身高', '联系方式']
-man_info6 = man_info4.extend(man_info5)
-print(man_info4)
+# 4 集合
+manInfoSet = {'刀刀', '男', 31}
+print(manInfoSet)
 
-# c, 平台为了保护你的隐私，需要你删除你的练习方式；
+# b、有一个人对你很感兴趣，平台需要您补足您的身高和联系方式；
+# 1 list.append()
+manInfoList1 = ['刀刀', '男', 31]
+print(id(manInfoList1))
+manInfoList2 = manInfoList1.append(173)
+manInfoList3 = manInfoList1.append(17322322629)
+print(manInfoList1)
+print(id(manInfoList1))
+print(id(manInfoList3))
+
+# 2 list.extend()
+manInfoList4 = ['姓名', '性别', '年龄']
+manInfoList5 = ['身高', '联系方式']
+manInfoList6 = manInfoList4.extend(manInfoList5)
+print(manInfoList4)
+
+# 3 dict
+manInfoDict1 = {'姓名': '刀刀', '性别': '男', '年龄': 31}
+
+# c、平台为了保护你的隐私，需要你删除你的联系方式；
+manInfoList4.remove('联系方式')
+print(manInfoList4)
