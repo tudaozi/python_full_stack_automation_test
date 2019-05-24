@@ -53,13 +53,17 @@ print(man_info)
 # b. 有一个人对你很感兴趣，平台需要您补足您的身高和联系方式；
 # 1
 man_info1 = ['姓名', '性别', '年龄']
-man_info1.append('身高')
-man_info1.append('联系方式')
+print(id(man_info1))
+man_info2 = man_info1.append('身高')
+man_info3 = man_info1.append('联系方式')
 print(man_info1)
+print(id(man_info1))
+print(id(man_info3))
+
 # 2
-man_info2 = ['姓名', '性别', '年龄']
-man_info3 = ['身高', '联系方式']
-man_info2.extend(man_info3)
-print(man_info2)
+man_info4 = ['姓名', '性别', '年龄']
+man_info5 = ['身高', '联系方式']
+man_info6 = man_info4.extend(man_info5)
+print(man_info4)
 
 # c, 平台为了保护你的隐私，需要你删除你的练习方式；
