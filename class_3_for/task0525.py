@@ -49,7 +49,10 @@
 提示：
 输出九九乘法表，格式如下：（每项数据之间空一个Tab键，可以使用"\t"）
 """
-for nums in range(8):
-    for num in range(9):
-        num *= 1
-        print(num)
+multiplier = 1
+multiplicand = 1
+for nums in range(1, 10):
+    for multiplier in range(1, 9):
+        multiplicand += 1
+        product = multiplier * multiplicand
+        print('{} * {}={}\t'.format(multiplier, multiplicand, product))
