@@ -63,3 +63,46 @@ black_list = ['卖茶叶', '卖面膜', '卖保险', '卖花生', '卖手机']
 while black_list:  # for为什么不能删除到空呢？列表单个值时却可以删空。
     del black_list[0]
     print(black_list)
+# 7.使用if语句完成剪刀石头布游戏
+"""
+提示：
+提示用户输入要出的拳 —— 石头（1）／剪刀（2）／布（3）
+电脑随机出拳
+比较胜负，显示用户胜、负还是平局
+电脑随机出拳
+使用随机数，首先需要导入随机数的模块 —— “工具包”
+import random
+导入模块后，可以直接在 模块名称 后面敲一个"."然后按 Tab键，会提示该模块中包含的所有函数
+random.randint(a, b)，返回[a, b]之间的整数，包含a和b
+random.randint(1, 10)  # 生成的随机数n: 1 <= n <= 10
+random.randint(4, 4)  # 结果永远是 4
+random.randint(25, 12)  # 该语句是错误的，下限必须小于上限
+"""
+import random
+
+while True:
+    punch = input("请出拳：")
+    punch = int(punch)
+    robot = random.randint(1, 3)
+    if punch == 0:
+        break
+    elif (punch < robot and robot - punch == 1) \
+            or (punch > robot and robot - punch == -2):
+        print("你赢了")
+    elif punch == robot:
+        print("平局")
+    else:
+        print("你输了")
+# 8.使用循环实现经典冒泡算法
+"""
+提示：
+利用for循环，完成a=[1,7,4,89,34,2]的冒泡排序（小的数字排前面，大的排后面），
+不能使用sort、sorted等内置函数或方法
+"""
+a = [1, 7, 4, 89, 34, 2]
+i = 0
+for i in range(0, 6):
+    if a[i] > a[i + 1]:
+        a.pop(i + 1)
+        a.insert(i, a[i])
+        print(a)
