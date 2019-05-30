@@ -48,13 +48,41 @@ b.根据BMI指数，给与相应提醒
 低于18.5： 过轻 18.5-25：   正常 25-28：      过重 28-32：      肥胖 高于32：   严重肥胖
 """
 
-# def num(types, nums):
-#     while not (nums.isdigit() or nums.replace(".", "").isdigit()):
-#         print("输入有误，请重新输入！")
-#         nums = input("请输入{}：".format(types))
-#     return float(nums)
-#
-#
+
+def num(types, nums):
+    """判断输入文本是否整数或浮点数，直到输入正确并返回浮点数"""
+    while not (nums.isdigit() or nums.replace(".", "").isdigit()):
+        print("输入有误，请重新输入！")
+        nums = input("请输入{}：".format(types))
+    return float(nums)
+
+
+def bmi(weights, heights):
+    """判断体重类型"""
+    bmis = weights / (heights ** 2)
+    if bmis < 18.5:
+        print("过轻")
+    elif 18.5 <= bmis <= 25:
+        print("正常")
+    elif 25 <= bmis <= 28:
+        print("过重")
+    elif 28 <= bmis <= 32:
+        print("肥胖")
+    elif bmis > 32:
+        print("严重肥胖")
+    else:
+        print()
+
+
+while True:
+    """循环输入身高和体重"""
+    height = input("请输入{}：".format("身高"))
+    height = num("身高", height)
+    weight = input("请输入{}：".format("体重"))
+    weight = num("体重", weight)
+    bmi(weight, height)
+    continue
+
 # while True:
 #     height = input("请输入{}：".format("身高"))
 #     height = num("身高", height)
@@ -72,7 +100,7 @@ b.根据BMI指数，给与相应提醒
 #     elif bmi > 32:
 #         print("严重肥胖")
 #     else:
-#         break
+#         continue
 
 # 3.编写如下程序
 """
