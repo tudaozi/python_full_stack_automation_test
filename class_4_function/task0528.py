@@ -17,28 +17,28 @@ c.如果输入0，退出循环
 d.输入其他内容，提示：“输入有误，请重新输入！”
 提示：本题可以使用if和while循环，同时需要校验用户的输入是否正确
 """
-# while True:
-#     week = input("请输入1-7的整数：")
-#     if not week.isdigit():
-#         print("输入有误，请重新输入！")
-#     else:
-#         week = int(week)
-#         if week == 0:
-#             break
-#         elif week == 1:
-#             print("周一")
-#         elif week == 2:
-#             print("周二")
-#         elif week == 3:
-#             print("周三")
-#         elif week == 4:
-#             print("周四")
-#         elif week == 5:
-#             print("周五")
-#         elif week == 6 or week == 7:
-#             print("周末")
-#         else:
-#             print()
+while True:
+    week = input("请输入1-7的整数：")
+    if not week.isdigit():
+        print("输入有误，请重新输入！")
+    else:
+        week = int(week)
+        if week == 0:
+            break
+        elif week == 1:
+            print("周一")
+        elif week == 2:
+            print("周二")
+        elif week == 3:
+            print("周三")
+        elif week == 4:
+            print("周四")
+        elif week == 5:
+            print("周五")
+        elif week == 6 or week == 7:
+            print("周末")
+        else:
+            print()
 
 # 2.编写如下程序
 """
@@ -109,9 +109,24 @@ a.定义一个函数，接收用户输入的用户名和密码作为参数
 b.正确的账号，用户名为lemon，密码为best
 """
 
+
+def user(u_names, p_words):
+    if u_names == 'lemon' and p_words == 'best':
+        print('登录系统成功')
+    else:
+        print('用户名或密码错误')
+
+
+username = input('请输入用户名：')
+password = input('请输入密码：')
+
+user(username, password)
+
 # 4.取出列表中最大的值
 # 将列表[13, 20, 42, 85, 9, 45]中的最大值为85
-
+nums = [13, 20, 42, 85, 9, 45]
+nums.sort()
+print(nums[-1])
 
 # 二、选作题
 # 1.列表去重    将列表[10, 1, 2, 20, 10, 3, 2, 1, 15, 20, 44, 56, 3, 2, 1]去除重复元素
