@@ -9,29 +9,54 @@
 交换之后，a = 200， b = 100
 """
 
-
-def exchange(a, b):
-    print("a={}".format(a))
-    print("b={}".format(b))
-
-
+# 2在函数内对全局变量重新赋值
 a = 100
 b = 200
-exchange(b, a)
 
+
+def exchange():
+    global a
+    a = 200
+    global b
+    b = 100
+
+
+exchange()
+print(a, b)
+
+# 3全局变量传入函数变为局部变量并重新赋值，然后返回局部变量的值给函数
+a = 100
+print(id(a))
+b = 200
+print(id(b))
+
+
+def exchange(a, b):
+    a = 200
+    b = 100
+    print(id(a))
+    print(id(b))
+    return a, b
+
+
+a, b = exchange(a, b)
+print(a, b)
+print(id(a))
+print(id(b))
+print(exchange(a, b))
 
 # 4. 将用户输入的所有数字相乘之后对20取余数,用户输入的数字个数不确定
 
-def remainder(*nums):
-    d_remainder = ''
-    d_nums = 1
-    for i in nums:
-        d_remainder = d_nums * i
-    r_remainders = d_remainder % 20
-    print(r_remainders)
-
-
-remainder(12, 21, 32)
+# def remainder(*nums):
+#     d_remainder = ''
+#     d_nums = 1
+#     for i in nums:
+#         d_remainder = d_nums * i
+#     r_remainders = d_remainder % 20
+#     print(r_remainders)
+#
+#
+# remainder(12, 21, 32)
 
 """
     
