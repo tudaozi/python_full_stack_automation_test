@@ -46,7 +46,7 @@ newPackage
                 pass
         module2
             import module1 as mods
-            mods()
+            mods.mod()
 """
 
 # 有一个列表 heros = [ ['孙悟空','韩信'], ['后羿', '鲁班'], ['庄周','项羽']], 请将这个列表降维，称为扁平列表。最后结果
