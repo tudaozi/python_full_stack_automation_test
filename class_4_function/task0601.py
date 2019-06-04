@@ -54,3 +54,4 @@ newPackage
 
 heros = [['孙悟空', '韩信'], ['后羿', '鲁班'], ['庄周', '项羽']]
 print([heros[0][0], heros[0][1], heros[1][0], heros[1][1], heros[2][0], heros[2][1]])
+print(heros[0] + heros[1] + heros[2])
