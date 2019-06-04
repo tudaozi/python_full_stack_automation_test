@@ -53,9 +53,4 @@ newPackage
 # [ '孙悟空','韩信', '后羿', '鲁班', '庄周','项羽'], 代码行数越少越好。
 
 heros = [['孙悟空', '韩信'], ['后羿', '鲁班'], ['庄周', '项羽']]
-
-# TODO 继续
-# def her(con):
-#     hero = []
-#     global heros
-#     while heros.isinstance(con, list):
+print([heros[0][0], heros[0][1], heros[1][0], heros[1][1], heros[2][0], heros[2][1]])
