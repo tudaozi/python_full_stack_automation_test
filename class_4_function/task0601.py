@@ -39,7 +39,7 @@
 # 新建一个包pack，在包中新建两个模块module1，module2,   在module1中定义一个函数，然后在module2中导入module1中定义的函数，并调用。
 """
 答：
-newPackage
+pack1
         __init__.py
         module1
             def mod():
