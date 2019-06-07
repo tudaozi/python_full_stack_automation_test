@@ -15,14 +15,14 @@ import random
 # c.计算并且 输出 付款金额
 # 新需求：
 # d.使用捕获异常的方式，来处理用户输入无效数据的情况
-# try:
-#     while True:
-#         price = input("Please input price: ")
-#         quantity = input("Please input quantity: ")
-#         money = int(price) * int(quantity)
-#         print("用户购买了{}斤，{}元/斤的橘子，总价{}元".format(price, quantity, money))
-# except ValueError:
-#     print('输入异常，请输入整数：')
+try:
+    while True:
+        price = input("Please input price: ")
+        quantity = input("Please input quantity: ")
+        money = int(price) * int(quantity)
+        print("用户购买了{}斤，{}元/斤的橘子，总价{}元".format(price, quantity, money))
+except ValueError:
+    print('输入异常，请输入整数：')
 
 # 3.编写如下程序
 # 优化剪刀石头布游戏程序
