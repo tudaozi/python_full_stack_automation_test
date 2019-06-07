@@ -35,6 +35,8 @@ import random
 # f.当程序结束之后，要求下一次运行程序能够获取用户历史胜负情况
 # h.如果使用文件保存用户历史胜负数据，需要使用异常来处理文件不存在的情况和实现程序结束后自动关闭文件的功能（选做）
 try:
+    with open('statisticalFile.txt', 'r+', encoding='utf-8') as statisticalFile1:
+        print('上次战况：' + statisticalFile1.read())
     battleStatistics = []
     while True:
         punch = input("请出拳：")
@@ -46,10 +48,10 @@ try:
                 draw = battleStatistics.count('平局')
                 defeat = battleStatistics.count('败局')
                 result = ['用户{}胜局，{}平局，{}败局'.format(winning, draw, defeat)]
-                with open('statisticalFile.txt', 'w+', encoding='utf-8') as statisticalFile:
-                    statisticalFile.writelines(result)
-                    statisticalFile.seek(0, 0)
-                    print(statisticalFile.read())
+                with open('statisticalFile.txt', 'w+', encoding='utf-8') as statisticalFile2:
+                    statisticalFile2.writelines(result)
+                    statisticalFile2.seek(0, 0)
+                    print(statisticalFile2.read())
                 break
             elif (punch < robot and robot - punch == 1) \
                     or (punch > robot and robot - punch == -2):
