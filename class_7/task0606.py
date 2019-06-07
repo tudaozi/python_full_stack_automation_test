@@ -1,8 +1,5 @@
 import random
 
-"""
-4、总结前面所有知识，提交思维导图或笔记
-"""
 # 1.在异常中，try关键字下的块语句、except下的块语句、else下的块语句、finally下的块语句执行逻辑是什么？
 """
 答：
@@ -48,9 +45,9 @@ try:
                 winning = battleStatistics.count('胜局')
                 draw = battleStatistics.count('平局')
                 defeat = battleStatistics.count('败局')
-                result = '用户{}胜局，{}平局，{}败局'.format(winning, draw, defeat)
+                result = ['用户{}胜局，{}平局，{}败局'.format(winning, draw, defeat)]
                 with open('statisticalFile.txt', 'w+', encoding='utf-8') as statisticalFile:
-                    statisticalFile.writeline(eval("'用户{}胜局，{}平局，{}败局'.format(winning, draw, defeat)"))
+                    statisticalFile.writelines(result)
                     statisticalFile.seek(0, 0)
                     print(statisticalFile.read())
                 break
@@ -64,8 +61,5 @@ try:
             else:
                 print("你输了")
                 battleStatistics.append('败局')
-        # else:
-        #     print('输入异常，只能输入数字0，1，2，3，请重新输入')
-
 except ValueError:
     print('输入异常，只能输入数字0，1，2，3，请重新输入')
