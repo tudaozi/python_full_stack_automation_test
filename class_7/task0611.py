@@ -46,6 +46,63 @@ class MobilePhone:
         self.model = model
         self.system_type = system_type
         self.cellphone_number = cellphone_number
+        print('品牌：{}，颜色：{}，类型：{}，系统：{}，号码：{}'.format(brand, color, model,
+                                                     system_type,
+                                                     cellphone_number))
 
-    def call(self):
-        pass
+    def call(self, caller, answer):
+        print('{}使用{}号码打电话给{}'.format(caller, self.cellphone_number, answer))
+
+    @staticmethod
+    def gap():
+        print('\n\\\\', '*' * 69, '\n')
+
+
+daodao_phone = MobilePhone('Daodao', 'black')
+print('类属性1：', MobilePhone.screen)
+print('类属性2：', MobilePhone.camera)
+daodao_phone.call('Daodao', 'Friend')
+daodao_phone.gap()
+friend_phone = MobilePhone('Friend', 'yellow', system_type='IOS', cellphone_number=13999999999)
+friend_phone.call('Friend', 'Daodao')
+daodao_phone.gap()
+
+# 2、灰色的Tom猫，今年1岁，吃着美味的食物，喝着可口的饮料，非常享受的样子
+"""
+a.根据以上信息，抽象出一个类
+b.定义相关属性，并能在类的外面调用
+c.定义相关方法，在方法中打印相应信息
+"""
+
+
+class Cat:
+    head = '一个猫头'
+    foot = '四只脚'
+    tail = '一条尾巴'
+    skin = '皮肤多毛'
+    print('这是一个有{},{}，{}，{}的一只猫'.format(head, foot, tail, skin))
+
+    def __init__(self, color, name, age):
+        self.color = color
+        self.name = name
+        self.age = age
+        print('{}的{}猫，今年{}岁'.format(color, name, age))
+
+    def eating(self, food):
+        return '{}的{}猫，今年{}岁,吃着美味的{}'.format(self.color, self.name, self.age, food)
+
+    def enjoy(self):
+        print(self.eating(self.foot), '非常享受的样子')
+
+
+daodao_cat = Cat
+print('类属性1：', daodao_cat.head)
+print('类属性2：', daodao_cat.foot)
+print('类属性3：', daodao_cat.tail)
+print('类属性4：', daodao_cat.skin)
+daodao_phone.gap()
+duoduo_cat = Cat('黄色', 'Tom', 2)
+print(duoduo_cat.eating('猫粮'))
+duoduo_cat.enjoy()
+
+# 3.列举3个生活中类和对象的例子，用代码表示。
