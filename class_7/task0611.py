@@ -9,25 +9,6 @@
 @Desc: S
 """
 
-"""
-1、实现一个手机类，并实例化你的手机。
-要求类里要有：属性+行为。 至少应该具有品牌，型号等信息。 拨打电话，发短信等功能。
-尽量多的获取不同属性和使用不同的功能。
-2、灰色的Tom猫，今年1岁，吃着美味的食物，喝着可口的饮料，非常享受的样子
-a.根据以上信息，抽象出一个类
-b.定义相关属性，并能在类的外面调用
-c.定义相关方法，在方法中打印相应信息
-3.列举3个生活中类和对象的例子，用代码表示。
-4.编写如下程序
-创建一个名为 Restaurant的类，要求拥有饭店名（restaurant_name） 和美食种类（cooking_type）两个属性。
-a.需要创建一个名为 describe_restaurant()的方法（描述饭店名和美食种类相关信息）和一个名为 open_restaurant()的方法（显示饭店正在营业）。
-b.根据这个类创建一个名为 restaurant 的实例，分别打印其两个属性，再调用前述两个方法。
-5.编写如下程序
-编写一个数学计算类，要求初始化方法带参数（传两个数字），能够实现加减乘除运算（方法）。
-二、选作题
-1.编写如下程序
-编写一个工具箱类，需要有工具的名称、功能描述、价格，能够添加工具、删除工具、查看工具，并且能获取工具箱中工具的总数。
-"""
 # 1、实现一个手机类，并实例化你的手机。
 """
 共有属性：Color, screen, camera
@@ -40,18 +21,21 @@ class MobilePhone:
     screen = 'Touch'
     camera = 'Megapixel'
 
-    def __init__(self, brand, color, model='Smartphone', system_type='Android', cellphone_number=13888888888):
+    def __init__(self, brand, color, model='Smartphone', system_type='Android', cellphone_number=''):
         self.brand = brand
         self.color = color
         self.model = model
         self.system_type = system_type
         self.cellphone_number = cellphone_number
-        print('品牌：{}，颜色：{}，类型：{}，系统：{}，号码：{}'.format(brand, color, model,
-                                                     system_type,
-                                                     cellphone_number))
+        print('品牌：{}，颜色：{}，类型：{}，系统：{}'.format(brand, color, model,
+                                               system_type))
+
+    def card(self):
+        cellphone_number = self.cellphone_number
+        return cellphone_number
 
     def call(self, caller, answer):
-        print('{}使用{}号码打电话给{}'.format(caller, self.cellphone_number, answer))
+        print('{}使用{}号码打电话给{}'.format(caller, self.card(), answer))
 
     @staticmethod
     def gap():
@@ -61,9 +45,7 @@ class MobilePhone:
 daodao_phone = MobilePhone('Daodao', 'black')
 print('类属性1：', MobilePhone.screen)
 print('类属性2：', MobilePhone.camera)
-daodao_phone.call('Daodao', 'Friend')
-daodao_phone.gap()
-friend_phone = MobilePhone('Friend', 'yellow', system_type='IOS', cellphone_number=13999999999)
+friend_phone = MobilePhone('Friend', 'yellow', system_type='IOS', cellphone_number='13888888888')
 friend_phone.call('Friend', 'Daodao')
 daodao_phone.gap()
 
@@ -80,7 +62,7 @@ class Cat:
     foot = '四只脚'
     tail = '一条尾巴'
     skin = '皮肤多毛'
-    print('这是一个有{},{}，{}，{}的一只猫'.format(head, foot, tail, skin))
+    print('这是有{},{}，{}，{}的一只猫'.format(head, foot, tail, skin))
 
     def __init__(self, color, name, age):
         self.color = color
@@ -89,10 +71,11 @@ class Cat:
         print('{}的{}猫，今年{}岁'.format(color, name, age))
 
     def eating(self, food):
+        self.food = food
         return '{}的{}猫，今年{}岁,吃着美味的{}'.format(self.color, self.name, self.age, food)
 
-    def enjoy(self):
-        print(self.eating(self.foot), '非常享受的样子')
+    def enjoying(self, enjoy):
+        print(self.eating(self.food), '非常享受的样子'.format(enjoy))
 
 
 daodao_cat = Cat
@@ -103,6 +86,169 @@ print('类属性4：', daodao_cat.skin)
 daodao_phone.gap()
 duoduo_cat = Cat('黄色', 'Tom', 2)
 print(duoduo_cat.eating('猫粮'))
-duoduo_cat.enjoy()
+duoduo_cat.enjoying('享受')
+daodao_phone.gap()
 
 # 3.列举3个生活中类和对象的例子，用代码表示。
+"""
+人类 男人女人
+车   公交车 轿车 
+树   枫树 杨树
+"""
+
+
+class Mankind:
+    hand = '两只手'
+    foot = '两只脚'
+    print('人类有{}{}'.format(hand, foot))
+
+    def __init__(self, gender, height):
+        self.gender = gender
+        self.height = height
+        print('这个是身高{height}米的{gender}'.format(gender=gender, height=height))
+
+    def work(self, to_work):
+        print('这个是身高{1}米的{0}，他正在{2}'.format(self.gender, self.height, to_work))
+
+
+tom = Mankind('男人', 2)
+print(tom.hand)
+print(tom.foot)
+tom.work('工作')
+daodao_phone.gap()
+
+
+class Car:
+    engine = '2.0T'
+    wheel = '四个轮子'
+    print('车具有一个{}发动机,{}'.format(engine, wheel))
+
+    def __init__(self, brand, color, types):
+        self.brand = brand
+        self.color = color
+        self.types = types
+        print('这是一个具有{0}发动机，{1}，品牌是{2}，{3}的{4}'.format(Car.engine, Car.wheel, brand, color, types))
+
+    def drive(self, driver, passenger):
+        print('{}开着一个具有{}发动机，{}，品牌是{}，{}的{}载着{}'.format(driver, Car.engine, Car.wheel, self.brand, self.color,
+                                                        self.types, passenger))
+
+
+cnCar = Car
+enCar = Car('法拉利', '金色', '跑车')
+enCar.drive('刀刀', '树树')
+daodao_phone.gap()
+
+
+class Tree:
+    root = '树根'
+    leaf = '树叶'
+    print('树有{},有{}'.format(root, leaf))
+
+    def __init__(self, types, color, size):
+        self.types = types
+        self.color = color
+        self.size = size
+        print('这是有很多{}和{}，{}的一棵{}{}'.format(Tree.root, Tree.leaf, size, color, types))
+
+    def shake(self, wind):
+        print('这是有很多{}和{}，{}的一棵{}{}被{}吹的刷刷响'.format(Tree.root, Tree.leaf, self.size, self.color, self.types, wind))
+
+
+big_tree = Tree
+skyscraper = Tree('古榕树', '金黄色', '超大')
+skyscraper.shake('大风')
+daodao_phone.gap()
+
+# 4.编写如下程序
+"""
+创建一个名为 Restaurant的类，要求拥有饭店名（restaurant_name） 和美食种类（cooking_type）两个属性。
+a.需要创建一个名为 describe_restaurant()的方法（描述饭店名和美食种类相关信息）和一个名为 open_restaurant()的方法（显示饭店正在营业）。
+b.根据这个类创建一个名为 restaurant 的实例，分别打印其两个属性，再调用前述两个方法。
+"""
+
+
+class Restaurant:
+    def __init__(self, restaurant_name, cooking_type):
+        self.restaurant_name = restaurant_name
+        self.cooking_type = cooking_type
+
+    def describe_restaurant(self):
+        return '这家店的名称是{}，有很多的{}'.format(self.restaurant_name, self.cooking_type)
+
+    def open_restaurant(self, operate):
+        print(self.describe_restaurant(), '，', operate)
+
+
+restaurant = Restaurant('北京饭店', '中餐')
+print(restaurant.describe_restaurant())
+restaurant.open_restaurant('正在营业')
+
+
+# 5.编写如下程序
+# 编写一个数学计算类，要求初始化方法带参数（传两个数字），能够实现加减乘除运算（方法）。
+
+class Calculate:
+    def __init__(self, num1, num2):
+        self.num1 = num1
+        self.num2 = num2
+
+    def count(self, method):
+        """
+        选择运算方法执行运算
+        :param method: 选择【1】加;【2】减;【3】乘 ;【4】除
+        :return: 返回对应的计算结果
+        """
+        try:
+            if method == 1:
+                return self.num1 + self.num2
+            elif method == 2:
+                return self.num1 - self.num2
+            elif method == 3:
+                return self.num1 * self.num2
+            elif method == 4:
+                return self.num1 / self.num2
+            else:
+                return '运算方法有误，请确认选项'
+        except TypeError:
+            print('输入有误，请输入数字')
+
+
+daoao_count = Calculate('a', 2)
+print(daoao_count.count(1))
+daodao_phone.gap()
+
+# 二、选作题
+"""
+1.编写如下程序
+编写一个工具箱类，需要有工具的名称、功能描述、价格，能够添加工具、删除工具、查看工具，并且能获取工具箱中工具的总数。
+"""
+
+
+class Tool:
+    def __init__(self, name, function, price):
+        self.name = name
+        self.function = function
+        self.price = price
+
+    def examine(self):
+        print('这个工具名称:{},功能：{}，价格：{}'.format(self.name, self.function, self.price))
+
+    def __repr__(self):
+        return self.name, self.function, self.price
+
+
+class Toolbox:
+    def __init__(self, tools):
+        self.tools = tools
+
+    def add(self, tool):
+        return self.tools.append(tool)
+
+    def reduce(self, tool):
+        return self.tools.remove(tool)
+
+
+tool1 = Tool('铁锤', '锤铁钉', 20)
+newtoolbox = Toolbox(tool1)
+print(newtoolbox)
