@@ -231,11 +231,11 @@ class Tool:
         self.function = function
         self.price = price
 
-    def examine(self):
-        print('这个工具名称:{},功能：{}，价格：{}'.format(self.name, self.function, self.price))
+    def look(self):
+        return '这个工具名称:{},功能：{}，价格：{}'.format(self.name, self.function, self.price)
 
     def __repr__(self):
-        return self.name, self.function, self.price
+        return self.name
 
 
 class Toolbox:
@@ -243,12 +243,47 @@ class Toolbox:
         self.tools = tools
 
     def add(self, tool):
-        return self.tools.append(tool)
+        self.tools.append(tool)
 
     def reduce(self, tool):
-        return self.tools.remove(tool)
+        if tool in self.tools:
+            self.tools.remove(tool)
+        else:
+            print('工具箱没有这个工具')
+
+    def search(self, tool):
+        for t in self.tools:
+            if tool == t:
+                print(Tool.look(tool))
+
+    def total(self):
+        print(len(self.tools))
+        pass
 
 
 tool1 = Tool('铁锤', '锤铁钉', 20)
-newtoolbox = Toolbox(tool1)
-print(newtoolbox)
+tool2 = Tool('胶钳', '夹东西', 15)
+tool3 = Tool('螺丝刀', '拧螺丝', 10)
+tool4 = Tool('钻头', '打洞', 12)
+tool5 = Tool('电钻', '钻东西', 1000)
+tool6 = Tool('剪刀', '剪东西', 8)
+tool7 = Tool('线钳', '剪线', 25)
+tool8 = Tool('螺丝', '固定物品', 5)
+
+daodao_phone.gap()
+# 实例化对象
+myToolBox = Toolbox([tool1])
+# 添加工具
+myToolBox.add(tool2)
+print(myToolBox.tools)
+myToolBox.add(tool3)
+print(myToolBox.tools)
+# 删除工具
+myToolBox.reduce(tool2)
+print(myToolBox.tools)
+myToolBox.reduce(tool5)
+print(myToolBox.tools)
+# 查看工具
+myToolBox.search(tool1)
+# 工具总数
+myToolBox.total()
