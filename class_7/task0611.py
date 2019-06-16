@@ -177,12 +177,13 @@ class Restaurant:
         return '这家店的名称是{}，有很多的{}'.format(self.restaurant_name, self.cooking_type)
 
     def open_restaurant(self, operate):
-        print(self.describe_restaurant(), '，', operate)
+        return '{}，{}。'.format(self.describe_restaurant(), operate)
 
 
 restaurant = Restaurant('北京饭店', '中餐')
 print(restaurant.describe_restaurant())
-restaurant.open_restaurant('正在营业')
+print(restaurant.open_restaurant('正在营业'))
+daodao_phone.gap()
 
 
 # 5.编写如下程序
@@ -207,15 +208,17 @@ class Calculate:
             elif method == 3:
                 return self.num1 * self.num2
             elif method == 4:
+                if self.num1 == 0 or self.num2 == 0:
+                    return '0不能作为除数或被除数'
                 return self.num1 / self.num2
             else:
                 return '运算方法有误，请确认选项'
         except TypeError:
-            print('输入有误，请输入数字')
+            return '输入有误，请输入数字'
 
 
-daoao_count = Calculate('a', 2)
-print(daoao_count.count(1))
+daoao_count = Calculate(5, 0)
+print(daoao_count.count(2))
 daodao_phone.gap()
 
 # 二、选作题
@@ -257,7 +260,7 @@ class Toolbox:
                 print(Tool.look(tool))
 
     def total(self):
-        print(len(self.tools))
+        print('{}个'.format(len(self.tools)))
         pass
 
 
@@ -270,7 +273,6 @@ tool6 = Tool('剪刀', '剪东西', 8)
 tool7 = Tool('线钳', '剪线', 25)
 tool8 = Tool('螺丝', '固定物品', 5)
 
-daodao_phone.gap()
 # 实例化对象
 myToolBox = Toolbox([tool1])
 # 添加工具
