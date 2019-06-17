@@ -9,40 +9,7 @@
 @Desc: S
 """
 
-
-class Users:
-    def __init__(self, user):
-        self.user = user
-
-    def add(self, serial, name):
-        self.user[serial] = name
-
-    # def __repr__(self):
-    #     return self.user
-
-
-class Mora:
-    def __init__(self, optional_role):
-        self.optional_role = optional_role
-
-    def role_selection(self, serial_number):
-        for t in self.optional_role.keys():
-            if serial_number == t:
-                return self.optional_role[t]
-
-    @staticmethod
-    def gap():
-        print('\n\\\\', '*' * 69, '\n')
-
-
-role = Users({})
-print(role)
-role.add(1, '曹操')
-print(type(role.user))
-role.add(2, '张飞')
-print(role.user)
-role.add(3, '刘备')
-print(role.user)
-
-my_mora = Mora(role.user)
-print(my_mora.role_selection(2))
+a = {1: 'a'}
+a.setdefault()
+with open('score.txt', 'w+', encoding='utf-8') as score:
+    score.writelines(self.optional_role[serial_number])
