@@ -8,6 +8,8 @@
 @Time: 2019-06-16 19:10
 @Desc: S
 """
+import random
+
 """
 ======必做题==========
 1、使用思维导图总结梳理类与对象相关知识点
@@ -68,15 +70,46 @@ class Users:
 class Mora:
     def __init__(self, optional_role):
         self.optional_role = optional_role
+        self.content_punch = {1: '剪刀', 2: '石头', 3: '布'}
+        print(type(self.content_punch))
 
     def role_selection(self, serial_number):
+        """
+        选择已有角色
+        :param serial_number: 角色对应的号码
+        :return: 返回角色的名称
+        """
         for t in self.optional_role.keys():
             if serial_number == t:
                 return self.optional_role[t]
 
-    @staticmethod
-    def gap():
-        print('\n\\\\', '*' * 69, '\n')
+    def role_punch(self, punch):
+        """
+        角色出拳
+        :param punch: 角色出拳数字钟
+        :return: 返回出拳数或错误状态
+        """
+        if punch in self.content_punch.keys():
+            print(self.content_punch[punch])
+            return punch
+        else:
+            return '输入有误，请重新选择，[1]剪刀，[2]石头，[3]布'
+
+    def robot_punch(self):
+        """
+        机器人出拳
+        :return:
+        """
+        self.punch_num = random.randint(1, 3)
+
+        def com
+
+            return self.punch_num
+
+
+@staticmethod
+def gap():
+    print('\n\\\\', '*' * 69, '\n')
 
 
 # 初始化用户
@@ -92,3 +125,4 @@ print(role.user)
 Mora.gap()
 my_mora = Mora(role.user)
 print(my_mora.role_selection(2))
+my_mora.role_punch(3)
