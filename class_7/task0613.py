@@ -82,7 +82,6 @@ class Mora:
         """
         for t in self.optional_role.keys():
             if serial_number == t:
-                self.score_num.append(serial_number)
                 self.score_name.append(self.optional_role[serial_number])
 
     def role_punch(self, punch):
@@ -94,7 +93,6 @@ class Mora:
         for p in self.content_punch.keys():
             if punch == p:
                 self.score_num.append(punch)
-                self.score_name.append(self.content_punch[punch])
 
     def robot_punch(self):
         """
@@ -105,32 +103,33 @@ class Mora:
         for r in self.content_punch.keys():
             if punch_num == r:
                 self.score_num.append(punch_num)
-                self.score_name.append('电脑')
                 self.score_name.append(self.content_punch[punch_num])
 
     def pk(self):
-        if (self.score_num[1] < self.score_num[2] and self.score_num[2] - self.score_num[1] == 1) \
-                or (self.score_num[1] > self.score_num[2] and self.score_num[2] - self.score_num[1] == -2):
+        if (self.score_num[0] < self.score_num[1] and self.score_num[1] - self.score_num[0] == 1) \
+                or (self.score_num[0] > self.score_num[1] and self.score_num[1] - self.score_num[0] == -2):
             print("你赢了")
-            self.score_name.append(self.score_name[0])
             self.score_name.append('赢')
-            self.score_name.append(self.score_name[2])
-            self.score_name.append('输')
-        elif self.score_num[1] == self.score_num[2]:
+        elif self.score_num[0] == self.score_num[1]:
             print("平局")
-            self.score_name.append(self.score_name[0])
             self.score_name.append('平')
-            self.score_name.append(self.score_name[2])
         else:
             print("你输了")
-            self.score_name.append(self.score_name[0])
             self.score_name.append('输')
-            self.score_name.append(self.score_name[2])
-            self.score_name.append('赢')
 
     @staticmethod
     def gap():
         print('\n\\\\', '*' * 69, '\n')
+
+    def write(self):
+        with open('score.txt', 'w+', encoding='utf-8')as score:
+            winning = self.score_name.count('赢')
+            draw = self.score_name.count('平')
+            defeat = self.score_name.count('输')
+            result = ['{}：{}赢，{}平，{}败'.format(self.score_name[0], winning, draw, defeat)]
+            score.writelines(result)
+            score.seek(0, 0)
+            print(score.read())
 
 
 # 初始化用户
@@ -144,13 +143,25 @@ print(role.user)
 role.add(3, '刘备')
 print(role.user)
 Mora.gap()
+
 # 实例化猜拳对象
 my_mora = Mora(role.user)
 # 选择角色
 my_mora.role_selection(2)
-# 用户出拳
-my_mora.role_punch(3)
-# 电脑出拳
-my_mora.robot_punch()
-# 用户和电脑pk
-my_mora.pk()
+while True:
+    # 用户出拳
+    punch_num = input("请出拳，1剪刀, 2石头, 3布")
+    my_mora.role_punch(int(punch_num))
+    # 电脑出拳
+    my_mora.robot_punch()
+    # 用户和电脑pk
+    my_mora.pk()
+    go = input("是否使用该角色继续猜拳，请输入‘y'或‘n’")
+    if go == 'y':
+        continue
+    elif go == 'n':
+        my_mora.write()
+        break
+    else:
+        print('请正确输入选项')
+        go = input("是否使用该角色继续猜拳，请输入‘y'或‘n’")
