@@ -69,7 +69,7 @@ class Mora:
             if status == 'y':
                 self.mora_punch()
             elif status == 'n':
-                with open('score.txt', 'w+', encoding='utf-8')as score:
+                with open('score.txt', 'a+', encoding='utf-8')as score:
                     role_winning = self.store_results[0].count(1)
                     role_draw = self.store_results[0].count(2)
                     role_defeat = self.store_results[0].count(3)
