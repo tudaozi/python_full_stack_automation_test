@@ -14,8 +14,8 @@ import random
 class Mora:
     def __init__(self, name):
         self.name = name
-        print('{}猜拳游戏'.format(name))
-        pass
+        self.store_results = [[], []]
+        print('{}猜拳'.format(name))
 
     # 1）函数1：选择角色1 曹操 2张飞 3 刘备
     def select_role(self):
@@ -35,34 +35,57 @@ class Mora:
     # 3）函数3：电脑出拳 随机产生1个1-3的数字，提示电脑出拳结果
     def computer_punch(self):
         robot_punch = random.randint(1, 3)
-        print(robot_punch)
         return robot_punch
 
     # 4）函数4：角色和机器出拳对战，对战结束后，最后出示本局对战结果...赢...输,然后提示用户是否继续？按y继续，按n退出。
     def mora_punch(self):
-        if (self.role_punch() < self.computer_punch() and self.computer_punch() - self.role_punch() == 1) \
-                or (self.role_punch() > self.computer_punch() and self.computer_punch() - self.role_punch() == -2):
+        """
+
+        :return: 分别是用户和电脑的输赢状态，1代表赢，2代表输，3代表平
+        """
+        role_punch = self.role_punch()
+        computer_punch = self.computer_punch()
+        if (role_punch < computer_punch and computer_punch - role_punch == 1) \
+                or (role_punch > computer_punch and computer_punch - role_punch == -2):
             print("你赢了")
-            # self.score_name.append('赢')
-        elif self.role_punch() == self.computer_punch():
+            self.store_results[0].append(1)
+            self.store_results[1].append(2)
+        elif role_punch == computer_punch:
             print("平局")
-            # self.score_name.append('平')
+            self.store_results[0].append(3)
+            self.store_results[1].append(3)
+            return [3, 3]
         else:
             print("你输了")
-            # self.score_name.append('输')
+            self.store_results[0].append(2)
+            self.store_results[1].append(1)
 
-    # 41)判断用户是否继续猜拳
+    # 41)判断用户是否继续猜拳,最后结束的时候输出结果 角色赢几局 电脑赢几局，平局几次 游戏结束
     def whether_mora(self):
-        pass
-
-    # 5）最后结束的时候输出结果 角色赢几局 电脑赢几局，平局几次 游戏结束   [[用户,赢，平，输],[电脑，赢，平，输]]
-    def output_result(self):
-
-        pass
+        select_role = self.select_role()
+        self.mora_punch()
+        while True:
+            status = input("是否继续猜拳？输入y继续，输入n退出")
+            if status == 'y':
+                self.mora_punch()
+            elif status == 'n':
+                with open('score.txt', 'w+', encoding='utf-8')as score:
+                    role_winning = self.store_results[0].count(1)
+                    role_draw = self.store_results[0].count(2)
+                    role_defeat = self.store_results[0].count(3)
+                    role_result = ['{}：{}赢，{}平，{}败'.format(select_role, role_winning, role_draw, role_defeat)]
+                    computer_winning = self.store_results[1].count(1)
+                    computer_draw = self.store_results[1].count(2)
+                    computer_defeat = self.store_results[1].count(3)
+                    computer_result = ['电脑：{}赢，{}平，{}败'.format(computer_winning, computer_draw, computer_defeat)]
+                    score.writelines(str([role_result, computer_result]))
+                    score.seek(0, 0)
+                    print(score.read())
+                break
+            else:
+                print('输入有误，请重新输入：')
+                continue
 
 
 my_mora = Mora('树树')
-my_mora.select_role()
-my_mora.role_punch()
-my_mora.role_punch()
-my_mora.mora_punch()
+my_mora.whether_mora()
