@@ -101,15 +101,38 @@ BaseTank拥有live属性（这个属性代表Tank是否存活 :  1代表活的�
 BaseTank拥有postion属性（这个属性代表Tank的位置，位置随机生成，一共有（1,10）10个位置）
 BeseTank拥有HP属性（代表血量，默认为10）
 BeseTank拥有attck_postion属性（代表攻击位置，位置随机生成，一共有（1,10）10个位置）BeseTank拥有HP属性（代表血量，默认为10）
-BaesTank拥有一个hit方法，该方法除self外，还接收一个参数other(代表对方Tank)，在该方法中判断，对方攻击位置和自己所在的位置是否一致，如果一致的话，就给自己的HP减1，当HP等于0时，修改live属性（改为死亡状态）
+BaesTank拥有一个hit方法，该方法除self外，还接收一个参数other(代表对方Tank)，在该方法中判断，对方攻击位置和自己所在的位置是否一致，
+如果一致的话，就给自己的HP减1，当HP等于0时，修改live属性（改为死亡状态）
 """
 
 
 class BaseTank:
-    def __init__(self):
-        pass
+    def __init__(self, name):
+        """
 
-    pass
+        :param name: 坦克名字
+        :param live: 存活状态
+        :param position: 坦克当前位置
+        :param HP: 血量
+        :param attack_position: 坦克攻击位置
+        """
+        self.name = name
+        self.live = 1
+        self.position = random.randint(1, 10)
+        self.HP = 10
+        self.attack_position = random.randint(1, 10)
+
+    def hit(self, other):
+        """
+
+        :param other: 对方坦克的位置
+        :return:
+        """
+        other = other
+        if other == self.position:
+            self.HP -= 1
+            if self.HP == 0:
+                self.live = 0
 
 
 # 2、实现一个玩家坦克类，MyTank,继承于BaseTank，该类拥有两个方法。
@@ -120,7 +143,18 @@ Bullet_launch方法：发射子弹，提示玩家输入攻击的目标位置，�
 
 
 class MyTank(BaseTank):
-    pass
+    """
+    move: 自己坦克的停留位置
+    bullet_launch: 自己坦克需要攻击的目标位置
+    """
+
+    def move(self):
+        move_position = input('请输入1-10的号码，移动坦克的位置：')
+        return int(move_position)
+
+    def bullet_launch(self):
+        target_position = input('请输入1-10的号码，攻击目标位置：')
+        return int(target_position)
 
 
 # 3、实现一个电脑坦克类，PCTank,继承于BaseTank，该类拥有两个方法。
@@ -131,4 +165,10 @@ Bullet_launch方法：发射子弹，攻击目标位置随机生成（1,10）
 
 
 class PCTank(BaseTank):
-    pass
+    def move(self):
+        move_position = random.randint(1, 10)
+        return move_position
+
+    def defbullet_launch(self):
+        bullet_launch = random.randint(1, 10)
+        return bullet_launch
