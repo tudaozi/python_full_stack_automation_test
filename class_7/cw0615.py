@@ -8,6 +8,8 @@
 @Time: 2019-06-22 00:51
 @Desc: S
 """
+from openpyxl import load_workbook, workbook
+import os
 
 
 # 1、总结类和对象的所有知识点。思维导图形式或者文字。
@@ -89,6 +91,20 @@ my_phone3.call(record=False, facetime=False)
 
 # 3、定义一个 ExcelManual 类。具有获取 sheet 表单， 读取单元格 和 修改单元格功能。
 class ExcelManual:
+    def __init__(self, path):
+        self.path = path
+
+    def open_excle(self):
+        demo_excle = load_workbook(self.path)
+        print(demo_excle)
+        pass
+
+    def save_excle(self):
+        pass
+
+    def close_excle(self):
+        pass
+
     def get_the_form(self):
         pass
 
@@ -99,3 +115,9 @@ class ExcelManual:
         pass
 
     pass
+
+
+my_excle = ExcelManual("/Users/liuzhipeng/Documents/Code/Repository/python_full_stack_automation_test/class_7
+                       ")
+my_excle.open_excle()
+print(os.getcwd())
