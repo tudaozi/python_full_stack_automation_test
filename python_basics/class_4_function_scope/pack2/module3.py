@@ -4,6 +4,6 @@
 # mod1()
 #############
 
-import class_4_function_scope.pack1.module1 as mod
+import python_basics.class_4_function_scope.pack1.module1 as mod
 
 mod.mod1()
