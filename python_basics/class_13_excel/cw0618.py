@@ -15,21 +15,22 @@ from openpyxl import load_workbook, Workbook
 class ExcelManal:
     def __init__(self, path):
         self.path = path
+        self.load_excle=None
         pass
 
     def open_excle(self):
-        load_excle = load_workbook(self.path)
-        return load_excle
+        self.load_excle = load_workbook(self.path)
+        return self.load_excle
 
     # 1、选择表单功能
     def choose_sheet(self):
-        load_excle = self.open_excle()
-        view_sheet = load_excle.worksheets
-        sheet_names = load_excle.sheetnames
-        active_sheet = load_excle.active
-        select_sheet = load_excle.worksheets[0]
-        assign_sheet = load_excle['Sheet1']
-        return view_sheet, sheet_names, active_sheet, select_sheet, assign_sheet, load_excle
+        self.open_excle()
+        view_sheet = self.load_excle.worksheets
+        sheet_names = self.load_excle.sheetnames
+        active_sheet = self.load_excle.active
+        select_sheet = self.load_excle.worksheets[0]
+        assign_sheet = self.load_excle['Sheet']
+        return view_sheet, sheet_names, active_sheet, select_sheet, assign_sheet
 
     # 2、读取一个单元格的数据功能
     def read_cell(self):
@@ -41,8 +42,10 @@ class ExcelManal:
     # 3、读取一行数据的功能
     def read_row(self):
         get_sheet = self.choose_sheet()[2]
+        row_data=[]
         for i in get_sheet[1]:
-            print(i.coordinate, i.value)
+            row_data+=i.coordinate, i.value
+        return row_data
 
     # 4、读取表单中所有数据功能
     def read_sheet(self):
@@ -53,17 +56,16 @@ class ExcelManal:
 
     # 5、往单元格中写入数据功能和保存数据
     def write_cell(self):
-        create_excle = Workbook()
-        active_sheet = create_excle.active
-        active_sheet.append(range(10))
-        create_excle.save('demo1.xlsx')
-        create_excle.close()
+        get_sheet = self.choose_sheet()[2]
+        get_sheet['A1']='Shushu'
+        self.load_excle.save(self.path)
+        self.load_excle.close()
 
 
-# my_excle = ExcelManal('demo.xlsx')
+my_excle = ExcelManal('demo.xlsx')
 # my_excle.read_row()
 # my_excle.read_sheet()
-# my_excle.write_cell()
+my_excle.write_cell()
 
 
 # 二、
@@ -99,5 +101,5 @@ class one_excle:
 # 2、保存测试用例数据 5 条，包含 url, data, 请求方法，预期结果 等数据。
 # 3、 读取 刚才的 excel 文件，分别打印每一行的数据
 # 4、创建一个实际结果列，分别填入对应的实际结果。
-my_one = one_excle('demo2.xlsx')
+my_one = one_excle('demo1.xlsx')
 my_one.create_excle()
