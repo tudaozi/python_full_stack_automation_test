@@ -4,7 +4,7 @@
 @Author: STAURL.COM
 @Contact: admin@staurl.com
 @Project: python_full_stack_automation_test
-@File: cw0620.py
+@File: cw0620test.py
 @Time: 2019-06-26 00:31
 @Desc: S
 """
@@ -46,12 +46,12 @@ class TestExcel(unittest.TestCase):
         wd1 = ws.cell(1, 2).value
         return wd, wd1
 
-    def test_None(self):
+    def test_none(self):
         self.assertAlmostEqual(self.setUp()[0], None)
 
     # 3、测试用例2：断言文件 第1行 第二列是否和长沙相等。
 
-    def test_Equal(self):
+    def test_equal(self):
         self.assertMultiLineEqual(self.setUp()[1], '长沙')
 
 
