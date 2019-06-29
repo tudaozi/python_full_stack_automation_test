@@ -9,7 +9,7 @@
 @Desc: S
 """
 import unittest
-from ..class_15_unittest2 import test_cw0622_suite
+from python_basics.class_15_unittest2 import test_cw0622_suite
 
 runner = unittest.TextTestRunner()
 runner.run(test_cw0622_suite.suite)

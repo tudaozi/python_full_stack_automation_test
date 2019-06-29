@@ -13,24 +13,24 @@ import unittest
 
 
 # 1、封装一个方法或者类，读取 excel 文件里面的数据
-# class OneExcel:
-#     def __init__(self, path):
-#         self.path = path
-#
-#     def open_excel(self):
-#         wb = Workbook()
-#         ws = wb.active
-#         ws.append(range(10))
-#         wd = tuple(ws.iter_rows(values_only=True))
-#         wd1 = ''
-#         for i in wd[0]:
-#             wd1 += str(eval('i'))
-#         wb.save(self.path)
-#         print(wd1)
-#
-#
-# my_excel = OneExcel('demo.xlsx')
-# my_excel.open_excel()
+class OneExcel:
+    def __init__(self, path):
+        self.path = path
+
+    def open_excel(self):
+        wb = Workbook()
+        ws = wb.active
+        ws.append(range(10))
+        wd = tuple(ws.iter_rows(values_only=True))
+        wd1 = ''
+        for i in wd[0]:
+            wd1 += str(eval('i'))
+        wb.save(self.path)
+        print(wd1)
+
+
+my_excel = OneExcel('demo.xlsx')
+my_excel.open_excel()
 
 
 # 2、测试用例1：断言文件 第2行 第三列是否为空
@@ -47,7 +47,7 @@ class TestExcel(unittest.TestCase):
         return wd, wd1
 
     def test_none(self):
-        self.assertAlmostEqual(self.setUp()[0], None)
+        self.assertIsNone(self.setUp()[0])
 
     # 3、测试用例2：断言文件 第1行 第二列是否和长沙相等。
 

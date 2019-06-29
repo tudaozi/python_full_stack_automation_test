@@ -8,15 +8,25 @@
 @Time: 2019/6/26 9:03
 @Desc: S
 """
+from openpyxl import load_workbook, Workbook
 
 
-class MathMethod:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
+class OneExcel:
+    def __init__(self, path):
+        self.path = path
 
-    def add(self):
-        return self.a + self.b
+    def open_excel(self):
+        wb = Workbook()
+        ws = wb.active
+        ws.append(range(10))
+        wd = tuple(ws.iter_rows(values_only=True))
+        wd1 = ''
+        for i in wd[0]:
+            wd1 += str(eval('i'))
+        wb.save(self.path)
+        print(wd1)
 
-    def sub(self):
-        return self.a - self.b
+
+if __name__ == '__main__':
+    my_excel = OneExcel('demo.xlsx')
+    my_excel.open_excel()

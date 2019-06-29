@@ -8,26 +8,21 @@
 @Time: 2019-06-28 01:10
 @Desc: S
 """
-# # 将上节课的单元测试用例通过 suite 和 runner 执行
-# import unittest
-# from .cw0620test import TestExcel
-#
-# suite = unittest.TestSuite()
-# suite.addTest(TestExcel('test_none'))
-# runner = unittest.TextTestRunner()
-# runner.run(suite)
-# # 1、两种以上 suite 添加测试用例的方式。（loader)
-# # 2、使用 HTMLTestRunner 生成测试报告
-#
-# if __name__ == '__main__':
-#     unittest.main()
-
 
 import unittest
-from .test_cw0622_method import TestMathMethod
+from python_basics.class_15_unittest2.test_cw0622_method import TestExcel
 
+# 1
 suite = unittest.TestSuite()
-suite.addTest(TestMathMethod('test_two_positive'))
+suite.addTests([TestExcel('test_none'), TestExcel('test_equal')])
+# # 2
+# loaders = unittest.TestLoader()
+# suite.addTest(loaders.loadTestsFromTestCase(TestExcel))
+# # 3
+# from python_basics.class_15_unittest2 import test_cw0622_method
+# suite = unittest.TestSuite()
+# loader = unittest.TestLoader()
+# suite.addTest(loader.loadTestsFromModule(test_cw0622_method))
 
 if __name__ == '__main__':
     unittest.main()
