@@ -9,7 +9,7 @@
 @Desc: S
 """
 import unittest
-from interface_automation.class_0626_unittest_excel_package.cw0626 import Arithmetic
+from interface_automation.class_0625_unittest_excel_package.cw0626 import Arithmetic
 
 
 class TestAdd(unittest.TestCase):

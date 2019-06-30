@@ -10,8 +10,8 @@
 """
 import unittest
 from openpyxl import load_workbook
-from interface_automation.class_0626_unittest_excel_package.cw0626 import Arithmetic
-from interface_automation.class_0626_unittest_excel_package.test_cw0626_excel_package_2 import HandleExcel
+from interface_automation.class_0625_unittest_excel_package.cw0626 import Arithmetic
+from interface_automation.class_0625_unittest_excel_package.test_cw0626_excel_package_2 import HandleExcel
 
 
 class TestArithmetic(unittest.TestCase):
@@ -51,6 +51,7 @@ class TestArithmetic(unittest.TestCase):
             except AssertionError as e:
                 print('具体异常为{}'.format(e))
                 self.file_1.write('\n{},执行结果为:{}\n具体异常为:{}\n'.format(msg, 'Fail', e))
+                self.ws_2.cell(index + 2, 6).value = real_result
                 self.ws_2.cell(index + 2, 7).value = 'Fail'
                 raise e
 
@@ -70,6 +71,7 @@ class TestArithmetic(unittest.TestCase):
             except AssertionError as e:
                 print('具体异常为{}'.format(e))
                 self.file_1.write('\n{},执行结果为:{}\n具体异常为:{}\n'.format(msg, 'Fail', e))
+                self.ws_2.cell(index + 2, 6).value = real_result
                 self.ws_2.cell(index + 2, 7).value = 'Fail'
                 raise e
 
@@ -89,6 +91,7 @@ class TestArithmetic(unittest.TestCase):
             except AssertionError as e:
                 print('具体异常为{}'.format(e))
                 self.file_1.write('\n{},执行结果为:{}\n具体异常为:{}\n'.format(msg, 'Fail', e))
+                self.ws_2.cell(index + 2, 6).value = real_result
                 self.ws_2.cell(index + 2, 7).value = 'Fail'
                 raise e
 
@@ -108,9 +111,9 @@ class TestArithmetic(unittest.TestCase):
             except AssertionError as e:
                 print('具体异常为{}'.format(e))
                 self.file_1.write('\n{},执行结果为:{}\n具体异常为:{}\n'.format(msg, 'Fail', e))
+                self.ws_2.cell(index + 2, 6).value = real_result
                 self.ws_2.cell(index + 2, 7).value = 'Fail'
                 raise e
-            continue
 
 
 if __name__ == '__main__':

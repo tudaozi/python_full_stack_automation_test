@@ -9,8 +9,8 @@
 @Desc: S
 """
 import unittest
-from interface_automation.class_0626_unittest_excel_package import HTMLTestRunnerNew
-from interface_automation.class_0626_unittest_excel_package.test_cw0626_case_suite_2 import suite
+from interface_automation.class_0625_unittest_excel_package import HTMLTestRunnerNew
+from interface_automation.class_0625_unittest_excel_package.test_cw0626_case_suite_2 import suite
 
 with open('test_resule_add_2.html', 'wb')as save_file:
     result = HTMLTestRunnerNew.HTMLTestRunner(stream=save_file, verbosity=2, title='四则运算测试用例报告',
