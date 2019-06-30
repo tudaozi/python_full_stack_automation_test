@@ -4,7 +4,7 @@
 @Author: STAURL.COM
 @Contact: admin@staurl.com
 @Project: python_full_stack_automation_test
-@File: test_cw0626_case.py
+@File: test_cw0626_case_1.py
 @Time: 2019-06-29 22:18
 @Desc: S
 """

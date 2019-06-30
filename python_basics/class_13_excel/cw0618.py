@@ -58,6 +58,7 @@ class ExcelManal:
     def write_cell(self):
         get_sheet = self.choose_sheet()[2]
         get_sheet['A1']='Shushu'
+        get_sheet.cell(1, 1).value = 'Shushu'
         self.load_excle.save(self.path)
         self.load_excle.close()
 
