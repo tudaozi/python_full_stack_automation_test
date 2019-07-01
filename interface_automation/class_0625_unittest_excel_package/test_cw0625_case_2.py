@@ -4,14 +4,16 @@
 @Author: STAURL.COM
 @Contact: admin@staurl.com
 @Project: python_full_stack_automation_test
-@File: test_cw0626_case_1.py
+@File: test_cw0625_case_1.py
 @Time: 2019-06-29 22:18
 @Desc: S
 """
 import unittest
+
 from openpyxl import load_workbook
-from interface_automation.class_0625_unittest_excel_package.cw0626 import Arithmetic
-from interface_automation.class_0625_unittest_excel_package.test_cw0626_excel_package_2 import HandleExcel
+
+from interface_automation.class_0625_unittest_excel_package.cw0625_testing_object import Arithmetic
+from interface_automation.class_0625_unittest_excel_package.test_cw0625_excel_package_2 import HandleExcel
 
 
 class TestArithmetic(unittest.TestCase):
