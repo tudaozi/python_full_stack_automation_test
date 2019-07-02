@@ -9,36 +9,45 @@
 @Desc: S
 """
 import unittest
+
 from ddt import ddt, data
-from openpyxl import load_workbook
+
 from interface_automation.class_0627_ddt_conf.cw0627_testing_object import Arithmetic
 from interface_automation.class_0627_ddt_conf.test_cw0627_excel_package import HandleExcel
 
-my_excel = HandleExcel('demo.xlsx', 'add')
+file = 'demo.xlsx'
+my_excel = HandleExcel(file)
 case_list = my_excel.get_case()
-print(case_list)
+
 
 @ddt
 class TestArithmetic(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+
         pass
 
     @classmethod
     def tearDownClass(cls):
         wb, ws = my_excel.load_excel()
-        wb.save(cls.file)
+        wb.save(file)
         wb.close()
 
     @data(*case_list)
-    def test_add(self):
-        real_result = Arithmetic(case_list['l_data'], case_list['r_data']).add()
-        expect_result = case_list['expected']
-        msg = case_list['title']
+    def test_add(self, case_list):
+        case_id = case_list['case_id']
+        title = case_list['title']
+        l_data = case_list['l_data']
+        r_data = case_list['r_data']
+        expected = case_list['expected']
+        actual = Arithmetic(l_data, r_data).add()
+        result = expected
+        msg = title
         try:
-            self.assertEqual(expect_result, real_result, msg)
+            self.assertEqual(result, actual, msg)
             print('\n{},执行结果为:{}\n'.format(msg, 'Pass'))
+            my_excel.write_result(case_id + 1, actual, 'Pass')
         except AssertionError as e:
             print('具体异常为{}'.format(e))
             raise e
