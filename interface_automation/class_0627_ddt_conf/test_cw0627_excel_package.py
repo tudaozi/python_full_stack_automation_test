@@ -8,7 +8,14 @@
 @Time: 2019-06-30 11:44
 @Desc: S
 """
+from configparser import ConfigParser
+
 from openpyxl import load_workbook  # 导入openpyxl第三方库
+
+config = ConfigParser()
+config.read('class_0627.conf', encoding='utf-8')
+actual_col = config.getint('excel', 'actual_col')
+result_col = config.getint('excel', 'actual_col')
 
 
 class HandleExcel:  # 创建一个Excel处理类
@@ -37,8 +44,8 @@ class HandleExcel:  # 创建一个Excel处理类
     def write_result(self, row, actual, result):
         wb, ws = self.load_excel()
         if isinstance(row, int) and (2 <= row <= ws.max_row):
-            ws.cell(row=row, column=6, value=actual)
-            ws.cell(row=row, column=7, value=result)
+            ws.cell(row=row, column=actual_col, value=actual)
+            ws.cell(row=row, column=result_col, value=result)
             wb.save(self.filename)
             wb.close()
 
