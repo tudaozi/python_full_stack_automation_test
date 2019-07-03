@@ -10,7 +10,7 @@
 """
 import unittest
 
-from interface_automation.class_0625_unittest_excel_package.test_cw0625_case_2 import TestArithmetic
+from interface_automation.class_0627_ddt_conf.test_cw0627_case import TestArithmetic
 
 suite = unittest.TestSuite()
 loader = unittest.TestLoader()

@@ -13,8 +13,16 @@ import unittest
 from ddt import ddt, data
 from interface_automation.class_0627_ddt_conf.cw0627_testing_object import Arithmetic
 from interface_automation.class_0627_ddt_conf.test_cw0627_excel_package import HandleExcel
+from configparser import ConfigParser
 
-file = 'demo.xlsx'
+config = ConfigParser()
+config.read('class_0627.conf', encoding='utf-8')
+# file = config['file path']['case_path']
+file = config.get('file path', 'case_path')
+true_result = config.get('msg', 'true_result')
+fail_result = config.get('msg', 'fail_result')
+actual_col = config.get('excel', 'actual_col')
+result_col = config.get('excel', 'result_col')
 
 
 @ddt
@@ -40,9 +48,9 @@ class TestArithmetic(unittest.TestCase):
         msg = title
         try:
             self.assertEqual(result, actual, msg)
-            print('\n{},执行结果为:{}\n'.format(msg, 'Pass'))
+            print('{},执行结果为:{}'.format(msg, true_result))
             my_HandleExcel = HandleExcel(file, 'add')
-            my_HandleExcel.write_result(case_id + 1, actual, 'Pass')
+            my_HandleExcel.write_result(case_id + 1, actual, true_result)
             wb, ws = my_HandleExcel.load_excel()
             wb.save(file)
             wb.close()
@@ -51,18 +59,18 @@ class TestArithmetic(unittest.TestCase):
             raise e
 
     @data(*HandleExcel(file, 'minus').get_case())
-    def test_minus(self, case_list2):
-        case_id = case_list2['case_id']
-        title = case_list2['title']
-        l_data = case_list2['l_data']
-        r_data = case_list2['r_data']
-        expected = case_list2['expected']
+    def test_minus(self, case_list):
+        case_id = case_list['case_id']
+        title = case_list['title']
+        l_data = case_list['l_data']
+        r_data = case_list['r_data']
+        expected = case_list['expected']
         actual = Arithmetic(l_data, r_data).minus()
         result = expected
         msg = title
         try:
             self.assertEqual(result, actual, msg)
-            print('\n{},执行结果为:{}\n'.format(msg, 'Pass'))
+            print('{},执行结果为:{}'.format(msg, 'Pass'))
             my_HandleExcel = HandleExcel(file, 'minus')
             my_HandleExcel.write_result(case_id + 1, actual, 'Pass')
             wb, ws = my_HandleExcel.load_excel()
@@ -84,7 +92,7 @@ class TestArithmetic(unittest.TestCase):
         msg = title
         try:
             self.assertEqual(result, actual, msg)
-            print('\n{},执行结果为:{}\n'.format(msg, 'Pass'))
+            print('{},执行结果为:{}'.format(msg, 'Pass'))
             my_HandleExcel = HandleExcel(file, 'multiply')
             my_HandleExcel.write_result(case_id + 1, actual, 'Pass')
             wb, ws = my_HandleExcel.load_excel()
@@ -106,7 +114,7 @@ class TestArithmetic(unittest.TestCase):
         msg = title
         try:
             self.assertEqual(result, actual, msg)
-            print('\n{},执行结果为:{}\n'.format(msg, 'Pass'))
+            print('{},执行结果为:{}'.format(msg, 'Pass'))
             my_HandleExcel = HandleExcel(file, 'division')
             my_HandleExcel.write_result(case_id + 1, actual, 'Pass')
             wb, ws = my_HandleExcel.load_excel()
