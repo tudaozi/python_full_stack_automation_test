@@ -13,11 +13,11 @@ from configparser import ConfigParser
 
 from ddt import ddt, data
 
-from interface_automation.class_0627_ddt_conf.cw0627_testing_object import Arithmetic
-from interface_automation.class_0627_ddt_conf.test_cw0627_excel_package import HandleExcel
+from interface_automation.class_0629_log.cw0629_testing_object import Arithmetic
+from interface_automation.class_0629_log.test_cw0629_excel_package import HandleExcel
 
 config = ConfigParser()
-config.read('class_0627.conf', encoding='utf-8')
+config.read('class_0629.conf', encoding='utf-8')
 # file = config['file path']['case_path']
 file = config.get('file path', 'case_path')
 true_result = config.get('msg', 'true_result')

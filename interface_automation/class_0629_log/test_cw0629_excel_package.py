@@ -13,7 +13,7 @@ from configparser import ConfigParser
 from openpyxl import load_workbook  # 导入openpyxl第三方库
 
 config = ConfigParser()
-config.read('class_0627.conf', encoding='utf-8')
+config.read('class_0629.conf', encoding='utf-8')
 actual_col = config.getint('excel', 'actual_col')
 result_col = config.getint('excel', 'result_col')
 
