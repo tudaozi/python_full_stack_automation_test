@@ -15,6 +15,7 @@ from ddt import ddt, data
 
 from interface_automation.class_0629_log.cw0629_testing_object import Arithmetic
 from interface_automation.class_0629_log.test_cw0629_excel_package import HandleExcel
+from interface_automation.class_0629_log.test_cw0629_log import do_logger
 
 config = ConfigParser()
 config.read('class_0629.conf', encoding='utf-8')
@@ -29,11 +30,11 @@ class TestArithmetic(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        pass
+        do_logger.info('\n{:=^40s}\n'.format('开始执行用例'))
 
     @classmethod
     def tearDownClass(cls):
-        pass
+        do_logger.info('\n{:=^40s}\n'.format('用例执行结束'))
 
     def setUp(self):
         pass
@@ -55,9 +56,11 @@ class TestArithmetic(unittest.TestCase):
             self.assertEqual(result, actual, msg)
             print('{},执行结果为:{}'.format(msg, true_result))
             self.my_HandleExcel.write_result(case_id + 1, actual, true_result)
+            do_logger.error("{}, 执行结果为: {}".format(msg, true_result))
         except AssertionError as e:
             print('具体异常为{}'.format(e))
             self.my_HandleExcel.write_result(case_id + 1, actual, fail_result)
+            do_logger.error("{}, 执行结果为: {},具体异常为{}".format(msg, fail_result, e))
             raise e
 
     @data(*HandleExcel(file, 'minus').get_case())
@@ -72,9 +75,11 @@ class TestArithmetic(unittest.TestCase):
             self.assertEqual(result, actual, msg)
             print('{},执行结果为:{}'.format(msg, true_result))
             self.my_HandleExcel.write_result(case_id + 1, actual, true_result)
+            do_logger.error("{}, 执行结果为: {}".format(msg, true_result))
         except AssertionError as e:
             print('具体异常为{}'.format(e))
             self.my_HandleExcel.write_result(case_id + 1, actual, fail_result)
+            do_logger.error("{}, 执行结果为: {},具体异常为{}".format(msg, fail_result, e))
             raise e
 
     @data(*HandleExcel(file, 'multiply').get_case())
@@ -89,9 +94,11 @@ class TestArithmetic(unittest.TestCase):
             self.assertEqual(result, actual, msg)
             print('{},执行结果为:{}'.format(msg, true_result))
             self.my_HandleExcel.write_result(case_id + 1, actual, true_result)
+            do_logger.error("{}, 执行结果为: {}".format(msg, true_result))
         except AssertionError as e:
             print('具体异常为{}'.format(e))
             self.my_HandleExcel.write_result(case_id + 1, actual, fail_result)
+            do_logger.error("{}, 执行结果为: {},具体异常为{}".format(msg, fail_result, e))
             raise e
 
     @data(*HandleExcel(file, 'division').get_case())
@@ -106,9 +113,11 @@ class TestArithmetic(unittest.TestCase):
             self.assertEqual(result, actual, msg)
             print('{},执行结果为:{}'.format(msg, true_result))
             self.my_HandleExcel.write_result(case_id + 1, actual, true_result)
+            do_logger.error("{}, 执行结果为: {}".format(msg, true_result))
         except AssertionError as e:
             print('具体异常为{}'.format(e))
             self.my_HandleExcel.write_result(case_id + 1, actual, fail_result)
+            do_logger.error("{}, 执行结果为: {},具体异常为{}".format(msg, fail_result, e))
             raise e
 
 
