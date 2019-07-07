@@ -10,11 +10,11 @@
 """
 import unittest
 
-from interface_automation.class_0625_unittest_excel_package.test_cw0625_case_2 import TestArithmetic
+from interface_automation.class_0625_unittest_excel.test_cw0625_case_1 import TestAdd
 
 suite = unittest.TestSuite()
 loader = unittest.TestLoader()
-suite.addTest(loader.loadTestsFromTestCase(TestArithmetic))
+suite.addTest(loader.loadTestsFromTestCase(TestAdd))
 
 if __name__ == '__main__':
     unittest.main()

@@ -12,8 +12,8 @@ import unittest
 
 from openpyxl import load_workbook
 
-from interface_automation.class_0625_unittest_excel_package.cw0625_testing_object import Arithmetic
-from interface_automation.class_0625_unittest_excel_package.test_cw0625_excel_package_2 import HandleExcel
+from interface_automation.class_0625_unittest_excel.cw0625_testing_object import Arithmetic
+from interface_automation.class_0625_unittest_excel.test_cw0625_excel_package_2 import HandleExcel
 
 
 class TestArithmetic(unittest.TestCase):

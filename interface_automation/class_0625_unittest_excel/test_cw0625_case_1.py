@@ -10,7 +10,7 @@
 """
 import unittest
 
-from interface_automation.class_0625_unittest_excel_package.cw0625_testing_object import Arithmetic
+from interface_automation.class_0625_unittest_excel.cw0625_testing_object import Arithmetic
 
 
 class TestAdd(unittest.TestCase):
