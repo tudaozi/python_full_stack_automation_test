@@ -8,18 +8,18 @@
 @Time: 2019-07-05 01:48
 @Desc: S
 """
-from configparser import ConfigParser
+from configparser import ConfigParser  # 导入ConfigParser模块
 
 
-class HandleConfig:
+class HandleConfig:  # 新建config封装类
     """
 
     """
 
     def __init__(self, filename=None):
-        self.filename = filename
-        self.config = ConfigParser()
-        self.config.read(self.filename, encoding='utf-8')
+        self.filename = filename  # 设定配置文件名
+        self.config = ConfigParser()  # 初始化对象
+        self.config.read(self.filename, encoding='utf-8')  # 读取指定配置文件
 
     def get_value(self, section, option):
         """
@@ -83,7 +83,7 @@ class HandleConfig:
             config.write(file)
 
 
-do_config = HandleConfig("class_0629.conf")
+do_config = HandleConfig("cw_0706.conf")
 
 if __name__ == '__main__':
     datas = {

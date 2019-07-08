@@ -11,7 +11,7 @@
 
 import logging
 
-from interface_automation.class_0706_request.cw0706_handle_config import do_config
+from interface_automation.class_0706_request.cw_0706_config import do_config
 
 logger_name = do_config.get_value('log', 'logger_name')
 logger_level = do_config.get_value('log', 'logger_level')
