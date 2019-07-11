@@ -11,7 +11,7 @@
 
 import logging
 
-from interface_automation.class_0629_log.test_cw0629_handle_config import do_config
+from interface_automation.class_0709_mysql.cw_0709_config import do_config
 
 logger_name = do_config.get_value('log', 'logger_name')
 logger_level = do_config.get_value('log', 'logger_level')
