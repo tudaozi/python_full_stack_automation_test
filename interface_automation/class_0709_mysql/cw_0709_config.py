@@ -90,5 +90,5 @@ if __name__ == '__main__':
         "file path": {'cases_path': 'cases.xlsx', 'log_path': 'record_run_result.txt'},
         "msg": {'success_result': 'Pass', 'fail_result': 'Fail'}
     }
-    write_filename = "write_config2.ini"
+    write_filename = "write_config.ini"
     HandleConfig.write_config(datas, write_filename)

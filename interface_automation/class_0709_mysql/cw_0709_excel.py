@@ -13,7 +13,7 @@ from configparser import ConfigParser
 from openpyxl import load_workbook  # 导入openpyxl第三方库
 
 config = ConfigParser()
-config.read('class_0629.conf', encoding='utf-8')
+config.read('cw_0709.conf', encoding='utf-8')
 actual_col = config.getint('excel', 'actual_col')
 result_col = config.getint('excel', 'result_col')
 
@@ -51,7 +51,7 @@ class HandleExcel:  # 创建一个Excel处理类
 
 
 if __name__ == '__main__':  # 在当前路径下才可以运行
-    file_name = 'demo.xlsx'  # 指定文件
+    file_name = 'cases.xlsx'  # 指定文件
     my_excel = HandleExcel(file_name, 'add')  # 实例化my_excel这个对象
     print(my_excel.get_case())  # 将对象调用方法后的结果打印出来
     my_excel.write_result(2, 4, 5)
