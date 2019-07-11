@@ -37,11 +37,14 @@ class HandleExcel:  # 创建一个Excel处理类
         wb.close()
         return cases_list  # 将用例列表返回给当前函数
 
-    def write_result(self, row, actual, result):
+    def write_result(self, row, data=None, actual=None, result=None, is_more=False):
         wb, ws = self.load_excel()
         if isinstance(row, int) and (2 <= row <= ws.max_row):
-            ws.cell(row=row, column=do_config.get_int('excel', 'actual_col'), value=actual)
-            ws.cell(row=row, column=do_config.get_int('excel', 'result_col'), value=result)
+            if is_more:
+                ws.cell(row=row, column=do_config.get_int('excel', 'data_col'), value=data)
+            else:
+                ws.cell(row=row, column=do_config.get_int('excel', 'actual_col'), value=actual)
+                ws.cell(row=row, column=do_config.get_int('excel', 'result_col'), value=result)
             wb.save(self.filename)
             wb.close()
 

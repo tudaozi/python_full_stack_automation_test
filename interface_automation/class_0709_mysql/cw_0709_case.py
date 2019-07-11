@@ -82,44 +82,6 @@ class TestArithmetic(unittest.TestCase):
             do_logger.error("{}, 执行结果为: {},具体异常为{}".format(msg, fail_result, e))
             raise e
 
-    @data(*HandleExcel(file, 'multiply').get_case())
-    def test_multiply(self, case_list):
-        self.my_HandleExcel = HandleExcel(file, 'multiply')
-        case_id, title, l_data, r_data, expected = case_list['case_id'], case_list['title'], case_list['l_data'], \
-                                                   case_list['r_data'], case_list['expected']
-        actual = Arithmetic(l_data, r_data).multiply()
-        result = expected
-        msg = title
-        try:
-            self.assertEqual(result, actual, msg)
-            print('{},执行结果为:{}'.format(msg, true_result))
-            self.my_HandleExcel.write_result(case_id + 1, actual, true_result)
-            do_logger.error("{}, 执行结果为: {}".format(msg, true_result))
-        except AssertionError as e:
-            print('具体异常为{}'.format(e))
-            self.my_HandleExcel.write_result(case_id + 1, actual, fail_result)
-            do_logger.error("{}, 执行结果为: {},具体异常为{}".format(msg, fail_result, e))
-            raise e
-
-    @data(*HandleExcel(file, 'division').get_case())
-    def test_division(self, case_list):
-        self.my_HandleExcel = HandleExcel(file, 'division')
-        case_id, title, l_data, r_data, expected = case_list['case_id'], case_list['title'], case_list['l_data'], \
-                                                   case_list['r_data'], case_list['expected']
-        actual = Arithmetic(l_data, r_data).division()
-        result = expected
-        msg = title
-        try:
-            self.assertEqual(result, actual, msg)
-            print('{},执行结果为:{}'.format(msg, true_result))
-            self.my_HandleExcel.write_result(case_id + 1, actual, true_result)
-            do_logger.error("{}, 执行结果为: {}".format(msg, true_result))
-        except AssertionError as e:
-            print('具体异常为{}'.format(e))
-            self.my_HandleExcel.write_result(case_id + 1, actual, fail_result)
-            do_logger.error("{}, 执行结果为: {},具体异常为{}".format(msg, fail_result, e))
-            raise e
-
 
 if __name__ == '__main__':
     unittest.main()
