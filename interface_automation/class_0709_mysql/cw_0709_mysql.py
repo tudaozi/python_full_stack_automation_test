@@ -42,8 +42,9 @@ class HandleMySQL:
 do_mysql = HandleMySQL()
 
 if __name__ == '__main__':
-    sql = 'select * from member limit 0,10;'
-    one_mysql = do_mysql.run(sql, is_more=True)
+    # sql = 'select * from member limit 0,10;'
+    sql = 'SELECT RegName,Pwd,MobilePhone FROM member WHERE MobilePhone =%s;'
+    one_mysql = do_mysql.run(sql, is_more=True, args=('18330372028',))
     print(one_mysql)
     do_mysql.close()
     pass
