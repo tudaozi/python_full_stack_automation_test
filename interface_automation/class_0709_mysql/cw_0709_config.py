@@ -92,3 +92,4 @@ if __name__ == '__main__':
     }
     write_filename = "write_config.ini"
     HandleConfig.write_config(datas, write_filename)
+    pass
