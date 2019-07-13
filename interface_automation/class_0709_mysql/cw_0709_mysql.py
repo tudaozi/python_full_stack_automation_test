@@ -38,21 +38,18 @@ class HandleMySQL:
         else:
             return self.cursor.fetchone()
 
-    def create_tel(self, sql):
-        tel_head = [137, 138, 139]
-        tel_tail_randoms = random.sample(string.digits, 8)
-        tel_tail = ''
-        for n in tel_tail_randoms:
-            tel_tail += tel_tail.join(n)
-        full_tel = ''
-        for i in random.sample(tel_head, 1):
-            full_tel += str(i) + tel_tail
-        sql_tel = self.run(sql, is_more=True)
-        for j in sql_tel:
-            if full_tel == j['MobilePhone']:
-                continue
-            else:
-                return int(full_tel)
+    @staticmethod
+    def create_tel():
+        tel_head = random.choice(['137', '138', '139'])
+        tel_tail = ''.join(random.sample(string.digits, 8))
+        full_tel = tel_head + tel_tail
+        return full_tel
+
+    def match_sql(self):
+        if self.run(sql, args=(cr), ):
+            return True
+        else:
+            return False
 
     def close(self):
         self.cursor.close()
@@ -66,7 +63,7 @@ if __name__ == '__main__':
     # sql = 'SELECT RegName,Pwd,MobilePhone FROM member WHERE MobilePhone =%s;'
     # sql = 'SELECT MobilePhone FROM member;'
     # one_mysql = do_mysql.run(sql, is_more=True)
-    sql = 'SELECT MobilePhone FROM member;'
+    sql = 'SELECT MobilePhone FROM member WHERE %s;'
     print(type(do_mysql.create_tel(sql)))
     do_mysql.close()
 
