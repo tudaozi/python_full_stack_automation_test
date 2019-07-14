@@ -9,7 +9,6 @@
 @Desc: S
 """
 import unittest
-from configparser import ConfigParser
 
 from ddt import ddt, data
 
