@@ -11,9 +11,7 @@
 
 import random
 import string
-
 import pymysql
-
 from interface_automation.class_0709_mysql.cw_0709_config import do_config
 
 
