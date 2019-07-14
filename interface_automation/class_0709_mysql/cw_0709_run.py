@@ -8,8 +8,8 @@
 @Time: 2019-06-29 22:19
 @Desc: S
 """
-from interface_automation.class_0629_log import HTMLTestRunnerNew
-from interface_automation.class_0629_log.test_cw0629_case_suite import suite
+from interface_automation.class_0709_mysql import HTMLTestRunnerNew
+from interface_automation.class_0709_mysql.cw_0709_case_suite import suite
 
 with open('test_resule.html', 'wb')as save_file:
     result = HTMLTestRunnerNew.HTMLTestRunner(stream=save_file, verbosity=2, title='四则运算测试用例报告',

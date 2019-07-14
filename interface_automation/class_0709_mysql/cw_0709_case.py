@@ -12,20 +12,17 @@ import unittest
 
 from ddt import ddt, data
 
-from interface_automation.class_0629_log.cw0629_testing_object import Arithmetic
-from interface_automation.class_0629_log.test_cw0629_excel_package import HandleExcel
-from interface_automation.class_0629_log.test_cw0629_log import do_logger
+from interface_automation.class_0709_mysql.cw_0709_config import do_config
+from interface_automation.class_0709_mysql.cw_0709_log import do_logger
 
-config = ConfigParser()
-config.read('class_0629.conf', encoding='utf-8')
 # file = config['file path']['case_path']
-file = config.get('file path', 'case_path')
-true_result = config.get('msg', 'true_result')
-fail_result = config.get('msg', 'fail_result')
+file = do_config.get_value('file path', 'case_path')
+true_result = do_config.get_value('msg', 'true_result')
+fail_result = do_config.get_value('msg', 'fail_result')
 
 
 @ddt
-class TestArithmetic(unittest.TestCase):
+class ApiTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):

@@ -10,11 +10,11 @@
 """
 import unittest
 
-from interface_automation.class_0629_log.test_cw0629_case import TestArithmetic
+from interface_automation.class_0709_mysql.cw_0709_case import ApiTest
 
 suite = unittest.TestSuite()
 loader = unittest.TestLoader()
-suite.addTest(loader.loadTestsFromTestCase(TestArithmetic))
+suite.addTest(loader.loadTestsFromTestCase(ApiTest))
 
 if __name__ == '__main__':
     unittest.main()
