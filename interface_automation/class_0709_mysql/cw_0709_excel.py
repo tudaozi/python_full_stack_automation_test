@@ -46,8 +46,6 @@ class HandleExcel:  # 创建一个Excel处理类
             wb.close()
 
 
-do_excel = HandleExcel()
-
 if __name__ == '__main__':  # 在当前路径下才可以运行
     file_name = 'cases.xlsx'  # 指定文件
     my_excel = HandleExcel(file_name, 'register')  # 实例化my_excel这个对象
